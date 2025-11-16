@@ -5,10 +5,10 @@
 using namespace std;
 
 int main() {
-    // 使用當前時間作為種子初始化隨機數生成器
+    
     srand(time(0));
 
-    // 生成 1 到 100 之間的一個隨機數
+    
     int secretNumber = rand() % 100 + 1;
     int guess;
     int tries = 0;
