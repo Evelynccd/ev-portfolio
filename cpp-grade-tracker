@@ -1,17 +1,17 @@
 #include <iostream>
 #include <string>
-#include <iomanip> // 用於格式化輸出
+#include <iomanip> 
 
 using namespace std;
 
-// 定義一個結構來儲存單個學生的資料
+
 struct Student {
     string name;
     int score;
     char grade;
 };
 
-// 計算學生分數對應的等級 (A, B, C, D, F)
+
 char calculateGrade(int score) {
     if (score >= 90) return 'A';
     else if (score >= 80) return 'B';
@@ -22,28 +22,28 @@ char calculateGrade(int score) {
 
 int main() {
     const int MAX_STUDENTS = 3;
-    // 使用結構陣列來儲存多個學生的資料
+    
     Student students[MAX_STUDENTS];
 
     cout << "--- Student Grade Tracker ---" << endl;
 
-    // 迴圈輸入每位學生的資料
+    
     for (int i = 0; i < MAX_STUDENTS; ++i) {
         cout << "\nEnter details for Student " << i + 1 << endl;
         
         cout << "Name: ";
-        // 使用 getline 讀取包含空格的姓名
-        cin.ignore(); // 清空緩衝區
+        
+        cin.ignore(); 
         getline(cin, students[i].name);
 
         cout << "Score (0-100): ";
         cin >> students[i].score;
 
-        // 計算並設定等級
+        
         students[i].grade = calculateGrade(students[i].score);
     }
 
-    // 輸出結果表格
+    
     cout << "\n======================================" << endl;
     cout << setw(5) << left << "No." 
          << setw(20) << left << "Name" 
