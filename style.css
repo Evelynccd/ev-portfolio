@@ -1,0 +1,20 @@
+body {
+    font-family: Arial, sans-serif; /* 更改字體 */
+    background-color: #f4f4f4; /* 更改背景顏色 */
+    color: #333; /* 更改文字顏色 */
+    margin: 20px;
+}
+
+h1 {
+    color: #007bff; /* 更改標題顏色 */
+    text-align: center; /* 標題置中 */
+}
+
+.container { /* 添加一個區塊來管理內容 */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
