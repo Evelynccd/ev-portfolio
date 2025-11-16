@@ -35,7 +35,7 @@ int main() {
             break;
 
         default:
-            // 當操作符不匹配任何 case 常數時執行此代碼
+            
             cout << "Error! The operator is not valid.";
             break;
     }
