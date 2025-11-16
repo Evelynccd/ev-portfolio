@@ -3,7 +3,7 @@
 Welcome to my GitHub profile!  
 Here’s a photo of me:
 
-![Evelyn's Photo](myphoto.png)
+![Evelyn's Photo](p.png)
 
 ## About Me
 - Passionate about programming  
