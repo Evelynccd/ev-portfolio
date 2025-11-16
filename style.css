@@ -1,25 +1,45 @@
-/* 基礎重置與深色背景 */
+/* ------------------------------------------- */
+/* 全新的 CSS，包含動畫和趣味性元素            */
+/* ------------------------------------------- */
+
+/* 基礎設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #1a1a1a; /* 深灰色背景 */
-    color: #f0f0f0; /* 淺灰色文字 */
+    font-family: 'Segoe UI', Arial, sans-serif; /* 使用更現代的字體 */
+    background: #1a1a1a; /* 深灰色背景 */
+    color: #f0f0f0;
     line-height: 1.6;
-    display: flex; /* 使用 flexbox 讓內容居中 */
+    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
+    overflow-x: hidden; /* 防止水平滾動條 */
+    /* --- ✨ 新增: 背景粒子/漸層動畫 ✨ --- */
+    background: radial-gradient(circle at top left, #2a2a2a, #1a1a1a 70%),
+                radial-gradient(circle at bottom right, #3a3a3a, #1a1a1a 70%);
+    background-size: 200% 200%; /* 讓漸層足夠大，以便移動 */
+    animation: gradientMove 15s ease infinite alternate; /* 漸層緩慢移動 */
 }
 
 /* 內容容器 */
 .container {
     width: 90%;
-    max-width: 600px;
-    background-color: #2b2b2b; /* 內容區塊的深灰色 */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* 黑色陰影 */
+    max-width: 700px; /* 稍微增加最大寬度 */
+    background-color: #2b2b2b;
+    padding: 40px; /* 增加內邊距 */
+    border-radius: 12px; /* 更圓潤的邊角 */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* 更明顯的陰影 */
     text-align: center;
+    position: relative;
+    z-index: 1; /* 確保內容在背景動畫之上 */
+    border: 1px solid #444; /* 輕微的邊框 */
+    /* --- ✨ 新增: 容器載入淡入動畫 ✨ --- */
+    animation: fadeInScale 0.8s ease-out forwards;
 }
 
 /* 標題與圖片 */
@@ -28,59 +48,230 @@ header {
 }
 
 h1 {
-    font-size: 2.5em;
-    color: #ffffff; /* 白色主標題 */
+    font-size: 3em; /* 稍微放大 */
+    color: #ffffff;
     margin-bottom: 5px;
+    /* --- ✨ 新增: 文字微光暈效果 ✨ --- */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 h2 {
-    font-size: 1em;
-    color: #a0a0a0; /* 灰色副標題 */
+    font-size: 1.1em; /* 稍微放大 */
+    color: #a0a0a0;
     font-weight: normal;
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* 增加間距 */
+    border: 1px solid #444;
+    padding: 8px 0; /* 增加內距 */
+    animation: pulseBorder 3s infinite; /* 邊框脈衝動畫 */
+    border-radius: 5px; /* 圓角邊框 */
 }
 
 .profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%; /* 圓形頭像 */
+    width: 140px; /* 稍微放大頭像 */
+    height: 140px;
+    border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #666; /* 灰色邊框 */
+    border: 4px solid #666; /* 稍粗的邊框 */
+    transition: transform 0.3s ease-out, border-color 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.1); /* 懸停時放大更多 */
+    border-color: #aaa;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* 懸停時增加光暈 */
 }
 
 /* 區塊標題 */
 h3 {
-    font-size: 1.5em;
+    font-size: 1.8em; /* 稍微放大 */
     color: #cccccc;
-    margin-top: 25px;
-    margin-bottom: 15px;
+    margin-top: 35px; /* 增加與上一個區塊的間距 */
+    margin-bottom: 20px;
+    position: relative; /* 用於底部線條動畫 */
 }
 
-/* 專案連結樣式 */
+h3::after { /* 底部裝飾線 */
+    content: '';
+    display: block;
+    width: 50px; /* 初始寬度 */
+    height: 2px;
+    background-color: #888;
+    margin: 10px auto 0;
+    transition: width 0.3s ease-out; /* 寬度過渡動畫 */
+}
+
+h3:hover::after {
+    width: 80px; /* 懸停時線條變長 */
+}
+
+/* 內容段落 */
+p {
+    color: #ccc;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+}
+
+/* 技能標籤樣式 */
+.skill-tags {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #444;
+    color: #fff;
+    padding: 8px 15px; /* 稍微增加內距 */
+    margin: 6px; /* 調整間距 */
+    border-radius: 5px; /* 更圓潤 */
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border: 1px solid #555;
+}
+
+.tag:hover {
+    background-color: #666;
+    transform: translateY(-2px); /* 懸停時輕微上浮 */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 學習目標和規劃的列表樣式 */
+.focus-list, .roadmap-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 15px 0 25px 0;
+    text-align: left;
+    max-width: 85%; /* 限制列表寬度 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.focus-list li, .roadmap-list li {
+    background-color: #383838;
+    padding: 12px 18px; /* 增加內距 */
+    margin-bottom: 10px; /* 增加間距 */
+    border-radius: 6px; /* 更圓潤 */
+    font-size: 0.95em;
+    color: #ccc;
+    position: relative;
+    padding-left: 35px; /* 為符號預留空間 */
+    transition: background-color 0.2s ease;
+}
+
+.focus-list li:hover, .roadmap-list li:hover {
+    background-color: #4a4a4a; /* 懸停時變亮 */
+}
+
+.focus-list li::before {
+    content: "📚";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* 垂直居中 */
+}
+
+.roadmap-list li::before {
+    content: "💡";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* 程式設計哲學引用區塊樣式 */
+.philosophy {
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.quote {
+    font-style: italic;
+    color: #a0a0a0;
+    border-left: 3px solid #666;
+    padding-left: 20px; /* 增加內距 */
+    margin: 20px auto;
+    max-width: 85%;
+    line-height: 1.8;
+}
+
+/* 確保區塊有底線分隔 */
+.info, .skills, .current-focus, .roadmap, .philos {
+    padding: 20px 0;
+    border-bottom: 1px dashed #333;
+}
+.projects { /* 專案區塊不加底線，頁腳加頂線 */
+    padding: 20px 0;
+}
+
+
+/* 專案連結樣式 (已修改過) */
 .project-link {
     display: block;
-    background-color: #444; /* 按鈕的深灰色 */
+    background-color: #444;
     color: #ffffff;
-    padding: 10px;
+    padding: 12px;
     margin: 10px auto;
     width: 80%;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #555; /* 增加邊框 */
 }
 
 .project-link:hover {
-    background-color: #555; /* 懸停時變淺 */
-}
-
-.note {
-    font-size: 0.8em;
-    color: #888;
+    background-color: #666;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* 更大的陰影效果 */
 }
 
 /* 頁腳 */
 footer p {
     margin-top: 30px;
+    padding-top: 15px; /* 與專案區塊有間距 */
     font-size: 0.75em;
     color: #777;
+    border-top: 1px solid #333; /* 頁腳頂部加線 */
+}
+
+/* ------------------------------------------- */
+/* --- 關鍵幀動畫定義 --- */
+/* ------------------------------------------- */
+
+/* 背景漸層緩慢移動 */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* 容器載入淡入縮放動畫 */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 邊框脈衝動畫 */
+@keyframes pulseBorder {
+    0% {
+        border-color: #444;
+        box-shadow: 0 0 0 0 rgba(102, 102, 102, 0.4);
+    }
+    50% {
+        border-color: #888;
+        box-shadow: 0 0 0 5px rgba(102, 102, 102, 0);
+    }
+    100% {
+        border-color: #444;
+        box-shadow: 0 0 0 0 rgba(102, 102, 102, 0);
+    }
 }
